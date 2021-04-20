@@ -2,7 +2,7 @@
 # atino@sfu.ca Dec 2018
 # Simple combinational Synthesis example
 
-set TOP aes128key
+set TOP ensc450
 
 # -----------------------------
 # Specifying Technology Libraries Design constraints
@@ -19,12 +19,24 @@ set TOP aes128key
 # Please Note (2) : Sometimes, for simplicity, these variables are set in a configuration file (.synopsys_dc.setup that is read by dc_shell at init
 
 #set search_path    "/local-scratch/localhome/escmc27/ensc450/HSPICE/Lib"
-set search_path    "/CMC/setups/ensc450/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB"
+#set search_path    "/CMC/setups/ensc450/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB"
+set search_path    "/CMC/setups/ensc450/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB  /CMC/setups/ensc450/Project/SRAM_Lib /local-scratch/localhome/escmc27/ensc450/Project/ensc450_system/vhdl/AES_Lib"
+
+
+
+#set search_path   "/local-scratch/localhome/escmc27/ensc450/Project/ensc450_system/vhdl/SRAM_Lib"
+#set target_library "SRAM.db"
+
+#set search_path   "/local-scratch/localhome/escmc27/ensc450/Project/ensc450_system/vhdl/AES_Lib"
+#set target_library "aesbuffer_slow.db"
+
 
 # Target library is the library that is used by the synthesis tool 
 # in order to map the behavioral RTL logic that is being synthesized
 #set target_library "lab2_lab3.db"
 set target_library "NangateOpenCellLibrary_slow.db"
+
+
 
 
 # The synthetic library variable specified pre-designed technology independent architectures pre-packaged by Synopsys
@@ -35,15 +47,20 @@ set synthetic_library [list dw_foundation.sldb ]
 
 # The link library must contain ALL CELLS used in the design.cOther than the two above, it shall include any IO cell, memory cell, 
 # or other cell/block that the user wishes to include in the design from other sources
-set link_library  [concat $target_library $synthetic_library]
-
+#set link_library  [concat $target_library $synthetic_library]
+set link_library [concat $target_library SRAM.db aesbuffer_slow.db $synthetic_library] 
 
 # -----------------------------
 # Running Logic Synthesis
 # -----------------------------
 
 # Reading input VHDL File(s): This steps only parses VHDL determining syntax errors, but the Synthesis process is not performed yet
-analyze -format vhdl ../vhdl/VHDL_AES/aes128key.vhd
+#analyze -format vhdl ../vhdl/aesbuffer.vhd
+#analyze -format vhdl ../vhdl/aes128key.vhd
+analyze -format vhdl ../vhdl/ensc450.vhd
+analyze -format vhdl ../vhdl/ubus.vhd
+analyze -format vhdl ../vhdl/counter.vhd
+analyze -format vhdl ../vhdl/dma.vhd
 
 # Logic Synthesis
 elaborate $TOP 
@@ -75,7 +92,7 @@ set_load                        5         [all_outputs]
 
 ## Timing Constraints
 # Establishing clock period:  Since clock is ideal, we don't want the tool to optimize the clk net so we set it as "dont touch"
-create_clock -name CLK -period 5 -waveform {0 2.5} {clock}
+create_clock -name CLK -period 15 -waveform {0 7.5} {clk}
 set_dont_touch_network CLK  
 
 # Delays imposed by the communication to/from other blocks in the system. 
@@ -84,7 +101,7 @@ set_input_delay  0.8 -max -clock CLK  [all_inputs]
 set_output_delay 0.8 -max -clock CLK  [all_outputs]
 
 # There is no reason to make the reset line so fast to complete in one clock
-set_max_delay 20 -from reset
+set_max_delay 20 -from resetn
 
 # -----------------------------
 # Running Technology Mapping

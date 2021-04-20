@@ -1,0 +1,144 @@
+ 
+****************************************
+Report : reference
+Design : ensc450
+Version: O-2018.06-SP5
+Date   : Tue Apr 20 02:13:08 2021
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+BUF_X1             NangateOpenCellLibrary
+                                  0.798000      29     23.141999  
+CLKBUF_X2          NangateOpenCellLibrary
+                                  1.064000       4      4.256000  
+DMA_1_32_32                    2382.827972       1   2382.827972  h, n
+INV_X1             NangateOpenCellLibrary
+                                  0.532000       2      1.064000  
+SRAM               SRAM       14884.000000       1  14884.000000  b, d
+aesbuffer          aesbuffer  28202.117188       1  28202.117188  d
+counter_32_4_1                 1962.015991       1   1962.015991  h, n
+ubus_32_32_40001000_400017ff_20000000_2000000f_a0000000_a000000f_b0000000_b00000ff
+                                717.401996       1    717.401996  h, n
+-----------------------------------------------------------------------------
+Total 8 references                                  48176.825146
+1
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -transition_time
+        -capacitance
+Design : ensc450
+Version: O-2018.06-SP5
+Date   : Tue Apr 20 02:13:08 2021
+****************************************
+
+Operating Conditions: slow   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: my_Mem (rising edge-triggered flip-flop)
+  Endpoint: EXT_RDATABUS[31]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  ensc450            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                          Cap     Trans      Incr       Path
+  ------------------------------------------------------------------------------------
+  my_Mem/clk (SRAM)                                       0.00      0.00       0.00 r
+  my_Mem/data_out[31] (SRAM)                    3.65      0.02      2.11       2.11 f
+  My_bus/S1_RDATABUS[31] (ubus_32_32_40001000_400017ff_20000000_2000000f_a0000000_a000000f_b0000000_b00000ff)
+                                                                    0.00       2.11 f
+  My_bus/U427/ZN (AOI22_X1)                     1.91      0.10      0.19       2.30 r
+  My_bus/U426/ZN (OAI221_X1)                    1.14      0.08      0.12       2.42 f
+  My_bus/M1_RDATABUS[31] (ubus_32_32_40001000_400017ff_20000000_2000000f_a0000000_a000000f_b0000000_b00000ff)
+                                                                    0.00       2.42 f
+  FE_OFC23_EXT_RDATABUS_31/Z (BUF_X1)           0.31      0.01      0.12       2.54 f
+  EXT_RDATABUS[31] (out)                                  0.01      0.00       2.54 f
+  data arrival time                                                            2.54
+  ------------------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: There is no defined clock in the design. (PWR-80)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+Warning: Design has unannotated black box outputs. (PWR-428)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : ensc450
+Version: O-2018.06-SP5
+Date   : Tue Apr 20 02:13:08 2021
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /CMC/setups/ensc450/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB/NangateOpenCellLibrary_slow.db)
+    aesbuffer (File: /local-scratch/localhome/escmc27/ensc450/Project/ensc450_system/vhdl/AES_Lib/aesbuffer_slow.db)
+    SRAM (File: /CMC/setups/ensc450/Project/SRAM_Lib/SRAM.db)
+
+Information: The library cell 'SRAM' in the library 'SRAM' is not characterized for internal power. (PWR-227)
+Information: The library cell 'aesbuffer' in the library 'aesbuffer' is not characterized for internal power. (PWR-227)
+Information: The design contains cells, other than constants and black boxes, that are not characterized for internal power. (PWR-228)
+
+Operating Conditions: slow   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+ensc450                5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 0.95 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  = 139.9972 uW   (58%)
+  Net Switching Power  =  99.8907 uW   (42%)
+                         ---------
+Total Dynamic Power    = 239.8879 uW  (100%)
+
+Cell Leakage Power     =  66.7773 uW
+
+Information: report_power power group summary does not include estimated clock tree power. (PWR-789)
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            5.5260            0.0000            5.5260  (   1.80%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register           0.0000            0.0000            0.0000            0.0000  (   0.00%)
+sequential       106.1302            1.0297        2.1389e+04          128.5491  (  41.92%)
+combinational     33.8671           93.3348        4.5388e+04          172.5895  (  56.28%)
+--------------------------------------------------------------------------------------------------
+Total            139.9973 uW        99.8905 uW     6.6777e+04 nW       306.6647 uW
+1

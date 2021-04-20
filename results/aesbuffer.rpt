@@ -1,0 +1,225 @@
+Information: Updating graph... (UID-83)
+ 
+****************************************
+Report : reference
+Design : aesbuffer
+Version: O-2018.06-SP5
+Date   : Sat Apr 17 20:56:37 2021
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+AND2_X1            NangateOpenCellLibrary
+                                  1.064000     230    244.720002  
+AND2_X2            NangateOpenCellLibrary
+                                  1.330000      16     21.280001  
+AND3_X1            NangateOpenCellLibrary
+                                  1.330000       3      3.990000  
+AOI21_X1           NangateOpenCellLibrary
+                                  1.064000       3      3.192000  
+AOI22_X1           NangateOpenCellLibrary
+                                  1.330000      62     82.460003  
+AOI221_X1          NangateOpenCellLibrary
+                                  1.596000       2      3.192000  
+AOI222_X1          NangateOpenCellLibrary
+                                  2.128000      38     80.864001  
+CLKBUF_X1          NangateOpenCellLibrary
+                                  0.798000      33     26.333999  
+CLKBUF_X3          NangateOpenCellLibrary
+                                  1.330000       9     11.970000  
+DFF_X1             NangateOpenCellLibrary
+                                  4.522000     550   2487.099910  n
+DFF_X2             NangateOpenCellLibrary
+                                  5.054000       1      5.054000  n
+INV_X1             NangateOpenCellLibrary
+                                  0.532000     359    190.988002  
+INV_X2             NangateOpenCellLibrary
+                                  0.798000      32     25.535999  
+MUX2_X1            NangateOpenCellLibrary
+                                  1.862000     552   1027.823994  
+NAND2_X1           NangateOpenCellLibrary
+                                  0.798000      41     32.717999  
+NAND2_X2           NangateOpenCellLibrary
+                                  1.330000       2      2.660000  
+NAND3_X1           NangateOpenCellLibrary
+                                  1.064000       3      3.192000  
+NOR2_X1            NangateOpenCellLibrary
+                                  0.798000       8      6.384000  
+NOR2_X4            NangateOpenCellLibrary
+                                  2.394000       3      7.182000  
+OAI21_X1           NangateOpenCellLibrary
+                                  1.064000      35     37.240000  
+OAI22_X1           NangateOpenCellLibrary
+                                  1.330000       2      2.660000  
+OAI222_X1          NangateOpenCellLibrary
+                                  2.128000      24     51.072001  
+OR2_X1             NangateOpenCellLibrary
+                                  1.064000      25     26.600000  
+OR2_X2             NangateOpenCellLibrary
+                                  1.330000      22     29.260001  
+XNOR2_X1           NangateOpenCellLibrary
+                                  1.596000       1      1.596000  
+XOR2_X1            NangateOpenCellLibrary
+                                  1.596000       5      7.980000  
+aes128key                     13421.561973       1  13421.561973  h, n
+-----------------------------------------------------------------------------
+Total 27 references                                 17844.609885
+1
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -transition_time
+        -capacitance
+Design : aesbuffer
+Version: O-2018.06-SP5
+Date   : Sat Apr 17 20:56:38 2021
+****************************************
+
+Operating Conditions: slow   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: addr_in[30]
+              (input port clocked by CLK)
+  Endpoint: aeskey1_reg[0]
+            (rising edge-triggered flip-flop clocked by CLK)
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  aesbuffer          5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                           Cap     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  clock CLK (rise edge)                              0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  input external delay                               0.80       0.80 f
+  addr_in[30] (in)               1.68      1.00      0.00       0.80 f
+  C8084/ZN (OR2_X2)              1.82      0.07      0.57       1.37 f
+  C8085/ZN (OR2_X2)              1.17      0.03      0.20       1.57 f
+  U1580/ZN (OR2_X1)              1.17      0.07      0.19       1.76 f
+  U1583/ZN (OR2_X1)              1.17      0.07      0.21       1.97 f
+  U1582/ZN (OR2_X1)              1.17      0.07      0.21       2.19 f
+  U1585/ZN (OR2_X1)              1.17      0.07      0.21       2.40 f
+  U1584/ZN (OR2_X1)              1.17      0.07      0.21       2.61 f
+  U1587/ZN (OR2_X1)              1.17      0.07      0.21       2.82 f
+  U1586/ZN (OR2_X1)              1.17      0.07      0.21       3.04 f
+  U1589/ZN (OR2_X1)              1.17      0.07      0.21       3.25 f
+  U1588/ZN (OR2_X1)              1.17      0.07      0.21       3.46 f
+  U1591/ZN (OR2_X1)              1.17      0.07      0.21       3.67 f
+  U1590/ZN (OR2_X1)              1.17      0.07      0.21       3.88 f
+  U1593/ZN (OR2_X1)              1.17      0.07      0.21       4.10 f
+  U1592/ZN (OR2_X1)              1.17      0.07      0.21       4.31 f
+  U1595/ZN (OR2_X1)              1.17      0.07      0.21       4.52 f
+  U1594/ZN (OR2_X1)              1.17      0.07      0.21       4.73 f
+  U1597/ZN (OR2_X1)              1.17      0.07      0.21       4.95 f
+  U1596/ZN (OR2_X1)              1.17      0.07      0.21       5.16 f
+  U1599/ZN (OR2_X1)              1.17      0.07      0.21       5.37 f
+  U1598/ZN (OR2_X1)              1.17      0.07      0.21       5.58 f
+  U1601/ZN (OR2_X1)              1.17      0.07      0.21       5.79 f
+  U1600/ZN (OR2_X1)              1.17      0.07      0.21       6.01 f
+  U1603/ZN (OR2_X1)              1.17      0.07      0.21       6.22 f
+  U1602/ZN (OR2_X1)              1.17      0.07      0.21       6.43 f
+  U1605/ZN (OR2_X1)              1.17      0.07      0.21       6.64 f
+  U1604/ZN (OR2_X1)              3.72      0.07      0.23       6.87 f
+  C8111/ZN (OR2_X2)              3.72      0.03      0.22       7.09 f
+  C8112/ZN (OR2_X2)              1.82      0.03      0.19       7.28 f
+  C8113/ZN (OR2_X2)              1.82      0.03      0.18       7.46 f
+  C8114/ZN (OR2_X2)              3.12      0.03      0.19       7.65 f
+  I_10/ZN (INV_X2)               8.31      0.04      0.09       7.74 r
+  C8356/ZN (AND2_X2)             1.95      0.02      0.11       7.84 r
+  U1019/ZN (INV_X1)              5.51      0.02      0.04       7.88 f
+  U1018/ZN (NAND3_X1)           10.55      0.11      0.15       8.03 r
+  U1677/ZN (INV_X2)              4.96      0.03      0.07       8.10 f
+  U24/ZN (AND3_X1)               6.32      0.03      0.15       8.25 f
+  U1627/Z (CLKBUF_X3)            6.58      0.02      0.12       8.37 f
+  U1642/Z (CLKBUF_X1)           26.71      0.13      0.24       8.61 f
+  U1537/Z (MUX2_X1)              1.34      0.03      0.25       8.86 f
+  aeskey1_reg[0]/D (DFF_X1)                0.03      0.01       8.87 f
+  data arrival time                                             8.87
+
+  clock CLK (rise edge)                             10.00      10.00
+  clock network delay (ideal)                        0.00      10.00
+  aeskey1_reg[0]/CK (DFF_X1)                         0.00      10.00 r
+  library setup time                                -0.17       9.83
+  data required time                                            9.83
+  ---------------------------------------------------------------------
+  data required time                                            9.83
+  data arrival time                                            -8.87
+  ---------------------------------------------------------------------
+  slack (MET)                                                   0.96
+
+
+1
+Loading db file '/CMC/setups/ensc450/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB/NangateOpenCellLibrary_slow.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : aesbuffer
+Version: O-2018.06-SP5
+Date   : Sat Apr 17 20:56:39 2021
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /CMC/setups/ensc450/SOCLAB/LIBRARIES/NangateOpenCellLibrary_PDKv1_3_v2010_12/Front_End/DB/NangateOpenCellLibrary_slow.db)
+
+
+Operating Conditions: slow   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+aesbuffer              5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 0.95 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  = 397.1236 uW   (98%)
+  Net Switching Power  =   9.2196 uW    (2%)
+                         ---------
+Total Dynamic Power    = 406.3432 uW  (100%)
+
+Cell Leakage Power     = 252.7853 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register         393.7177            0.2284        4.3148e+04          437.0937  (  66.31%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational      3.4053            8.9912        2.0964e+05          222.0342  (  33.69%)
+--------------------------------------------------------------------------------------------------
+Total            397.1230 uW         9.2196 uW     2.5279e+05 nW       659.1279 uW
+1
